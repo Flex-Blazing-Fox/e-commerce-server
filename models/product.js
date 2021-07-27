@@ -10,14 +10,74 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.Product_type, { foreignKey: 'product_id' })
     }
   };
   Product.init({
-    name: DataTypes.STRING,
-    image_url: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    type: DataTypes.STRING
+    name: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'product name must not be empty',
+        },
+        notNull: {
+          args: true,
+          msg: 'product name must not be null',
+        },
+      },
+    },
+    image_url: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'image_url name must not be empty',
+        },
+        notNull: {
+          args: true,
+          msg: 'image_url name must not be null',
+        },
+      },
+    },
+    price: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'price must not be empty',
+        },
+        notNull: {
+          args: true,
+          msg: 'price must not be null',
+        },
+        min: {
+          args: 0,
+          msg: 'price must be greater or equal to 0'
+        }
+      },
+    },
+    stock: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'stock must not be empty',
+        },
+        notNull: {
+          args: true,
+          msg: 'stock must not be null',
+        },
+        min: {
+          args: 0,
+          msg: 'stock must be greater or equal to 0'
+        }
+      },
+    },
   }, {
     sequelize,
     modelName: 'Product',
