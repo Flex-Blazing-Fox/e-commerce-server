@@ -21,7 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
       validate: {
-        isEmail: true,
+        isEmail: {
+          args: true,
+          msg: 'invalid email address'
+        },
         notEmpty: {
           args: true,
           msg: 'email must not be empty',
@@ -44,6 +47,10 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'password must not be null',
         },
+        len: {
+          args: [4, 20],
+          msg: 'password must be between 4 and 20 characters'
+        }
       },
     },
     role: {
