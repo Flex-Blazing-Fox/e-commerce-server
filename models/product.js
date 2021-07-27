@@ -31,8 +31,12 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue:0,
       validate:{
         min:{
-          args:0,
-          msg: "Harga Tidak Boleh Minus"
+          args:[0],
+          msg:"Harga Tidak Boleh Minus"
+        },
+        max:{
+          args:[999999999],
+          msg:"Harga Tidak Boleh Minus"
         }
       }
     },
@@ -42,8 +46,12 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue:0,
       validate:{
         min:{
-          args:0,
-          msg: "Stok Tidak Boleh Minus"
+          args:[0],
+          msg:"Stock Tidak Boleh Minus"
+        },
+        max:{
+          args:[999999999],
+          msg:"Stock Tidak Boleh Minus"
         }
       }
     },
