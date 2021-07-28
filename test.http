@@ -1,0 +1,120 @@
+# @host=https://kanban-server-rangga.herokuapp.com
+@host=http://localhost:3000
+
+GET {{host}} http/1.1
+
+### Register
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "user1@gmail.com",
+    "password": "user1"
+}
+
+### Register same email
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "user1@gmail.com",
+    "password": "user123"
+}
+
+### Register invalid email
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "user",
+    "password": "user123"
+}
+
+### Register empty email or password
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "",
+    "password": "user123"
+}
+
+
+### Login
+POST {{host}}/user/login http/1.1
+Content-Type: application/json
+
+{
+    "email": "user1@gmail.com",
+    "password": "user1"
+}
+
+### Login With Wrong Password
+POST {{host}}/user/login http/1.1
+Content-Type: application/json
+
+{
+    "email": "user2@gmail.com",
+    "password": "user1"
+}
+
+### Create a Task
+POST {{host}}/task
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+
+{
+    "title": "Example Title 4",
+    "description": "Example Description 4",
+    "priority": "high",
+    "category": "todos",
+    "due_date": "2021-08-30 00:00:00"
+}
+
+### Get All Tasks
+GET {{host}}/task
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+
+### Get Certain Task
+GET {{host}}/task/2
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+
+
+
+### Patch a Task
+PATCH {{host}}/task/2
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+
+{
+    "due_date": "2021-08-30 00:00:00"
+}
+
+### Patch Unauthorized Task
+PATCH {{host}}/task/1
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI1OTQzNTM4fQ.-HgZm17i3Ax2DypNlTODr3PMTSUJqAvCxCEfVRHEj9I
+
+{
+    "due_date": "2021-08-31 00:00:00"
+}
+
+### Put a Task
+PUT {{host}}/task/2
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+
+{
+    "title": "Example Title 3",
+    "description": "Example Desc 3",
+    "priority": "medium",
+    "category": "todo",
+    "due_date": "2021-07-30 00:00:00"
+}
+
+### Delete a Task
+DELETE {{host}}/task/2
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI1OTQzNTM4fQ.-HgZm17i3Ax2DypNlTODr3PMTSUJqAvCxCEfVRHEj9I
