@@ -1,11 +1,7 @@
-if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config()
-}
-
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const errorHandler = require('./middleware/errorHandler')
+const errorHandler = require('./middlewares/errorHandler')
 const routers = require('./routers')
 
 app.use(cors())
