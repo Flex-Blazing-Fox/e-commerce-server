@@ -1,5 +1,4 @@
 const { Type } = require('../models')
-const { isTypeUnique } = require('../helpers/validations')
 
 class TypeController {
   static async getTypes(req, res, next) {
@@ -28,12 +27,14 @@ class TypeController {
   static async addType(req, res, next) {
     try {
       const { name } = req.body
-
+      
       const type = await Type.create({ name })
 
       return res.status(201).json({ type })
     } catch (err) {
-      next(isTypeUnique(err))
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        return next({ name: 'UniqueTypeError' })
+      }
       next(err)
     }
   }
@@ -56,7 +57,9 @@ class TypeController {
 
       return res.status(200).json({ type: type[1][0] })
     } catch (err) {
-      next(isTypeUnique(err))
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        return next({ name: 'UniqueTypeError' })
+      }
       next(err)
     }
   }

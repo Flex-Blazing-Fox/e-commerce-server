@@ -1,5 +1,4 @@
 const { Product, Product_Type, Type } = require('../models')
-const { isProductUnique } = require('../helpers/validations')
 
 class ProductController {
   static async getProducts(req, res, next) {
@@ -53,7 +52,9 @@ class ProductController {
 
       return res.status(201).json({ product, type_name: type.name })
     } catch (err) {
-      next(isProductUnique(err))
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        return next({ name: 'UniqueProductError' })
+      }
       next(err)
     }
   }
@@ -86,7 +87,9 @@ class ProductController {
 
       res.status(200).json({ product: product[1][0], type_name: type.name })
     } catch (err) {
-      next(isProductUnique(err))
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        return next({ name: 'UniqueProductError' })
+      }
       next(err)
     }
   }
