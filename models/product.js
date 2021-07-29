@@ -54,9 +54,10 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'price must not be null',
         },
-        min: {
-          args: 0,
-          msg: 'price must be greater or equal to 0'
+        validateNegativeNumber(value) {
+          if (value < 0) {
+            throw new Error('price must be greater than or equal to 0')
+          }
         }
       },
     },
@@ -72,9 +73,10 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'stock must not be null',
         },
-        min: {
-          args: 0,
-          msg: 'stock must be greater or equal to 0'
+        validateNegativeNumber(value) {
+          if (value < 0) {
+            throw new Error('stock must be greater than or equal to 0')
+          }
         }
       },
     },
