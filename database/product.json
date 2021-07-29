@@ -1,0 +1,20 @@
+[
+  {
+    "name": "drone",
+    "image_url": "https://ibb.co/jJmVdc9",
+    "price": 21000000,
+    "stock": 2
+  },
+  {
+    "name": "laptop",
+    "image_url": "https://ibb.co/5KNZML2",
+    "price": 6000000,
+    "stock": 4
+  },
+  {
+    "name": "baju",
+    "image_url": "https://ibb.co/5B7CGBf",
+    "price": 40000,
+    "stock": 10
+  }
+]

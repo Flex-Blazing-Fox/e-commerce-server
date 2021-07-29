@@ -8,8 +8,8 @@ POST {{host}}/user/register http/1.1
 Content-Type: application/json
 
 {
-    "email": "user1@gmail.com",
-    "password": "user1"
+    "email": "user2@gmail.com",
+    "password": "user2"
 }
 
 ### Register same email
@@ -58,63 +58,56 @@ Content-Type: application/json
     "password": "user1"
 }
 
-### Create a Task
-POST {{host}}/task
+### Get All Products
+GET {{host}}/product
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI3NTY5MjMyfQ.jX_5Pg81eymLIx1VvKEprhKmSHBlwBV6J3eEqdEUJek
+
+
+
+### Get Certain Product
+GET {{host}}/product/2
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI3NTY5MjMyfQ.jX_5Pg81eymLIx1VvKEprhKmSHBlwBV6J3eEqdEUJek
+
+
+### Create a Product
+POST {{host}}/product
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
 
 {
-    "title": "Example Title 4",
-    "description": "Example Description 4",
-    "priority": "high",
-    "category": "todos",
-    "due_date": "2021-08-30 00:00:00"
+    "name": "Mouse",
+    "image_url": "https://ibb.co/bLMGY0f",
+    "price": 500000,
+    "stock": 3
 }
-
-### Get All Tasks
-GET {{host}}/task
-Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
-
-### Get Certain Task
-GET {{host}}/task/2
-Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
-
-
 
 ### Patch a Task
-PATCH {{host}}/task/2
+PATCH {{host}}/product/1
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
 
 {
-    "due_date": "2021-08-30 00:00:00"
-}
-
-### Patch Unauthorized Task
-PATCH {{host}}/task/1
-Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI1OTQzNTM4fQ.-HgZm17i3Ax2DypNlTODr3PMTSUJqAvCxCEfVRHEj9I
-
-{
-    "due_date": "2021-08-31 00:00:00"
+    "name": "Drone Mantapss Bangets",
+    "image_url": "https://ibb.co/jJmVdc9",
+    "price": 22000000,
+    "stock": 15
 }
 
 ### Put a Task
-PUT {{host}}/task/2
+PUT {{host}}/product/1
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI2MjY5MDYxfQ.9u4HybiZbiMM6S_HcuXnasZ23zsdze0GCPekRhr6His
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
 
 {
-    "title": "Example Title 3",
-    "description": "Example Desc 3",
-    "priority": "medium",
-    "category": "todo",
-    "due_date": "2021-07-30 00:00:00"
+    "name": "Drone Mantapss Bangets",
+    "image_url": "https://ibb.co/jJmVdc9",
+    "price": 21000000,
+    "stock": 5
 }
 
 ### Delete a Task
-DELETE {{host}}/task/2
+DELETE {{host}}/product/4
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI1OTQzNTM4fQ.-HgZm17i3Ax2DypNlTODr3PMTSUJqAvCxCEfVRHEj9I
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
