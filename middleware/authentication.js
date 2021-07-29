@@ -19,7 +19,7 @@ const adminAuthentication = (req, res, next)=>{
                 }
                 next() 
             }else{
-                throw{name: 'USER_NOT_FOUND'}
+                throw{name: 'ACCESS_DENIED'}
             }
         })
         .catch(err=>{
@@ -49,7 +49,7 @@ const custAuthentication = (req, res, next)=>{
                 }
                 next() 
             }else{
-                throw{name: 'USER_NOT_FOUND'}
+                throw{name: 'ACCESS_DENIED'}
             }
         })
         .catch(err=>{

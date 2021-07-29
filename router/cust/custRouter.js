@@ -1,10 +1,10 @@
 const { custAuthentication } = require('../../middleware/authentication')
 const product = require('./productRouter')
-const UserController = require('../../controller/adminController')
+const CustController = require('../../controller/custController')
 
 const router = require('express').Router()
-router.post('/register', UserController.register)
-router.post('/login', UserController.login)
+router.post('/register', CustController.register)
+router.post('/login', CustController.login)
 
 //product
 router.get('/product', custAuthentication, product)

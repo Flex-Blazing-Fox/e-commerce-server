@@ -2,15 +2,16 @@ const {User} = require('../models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-class UserController{
+class AdminController{
     static register(req, res, next){
         const {email, password} = req.body
         User.create({
             email,
-            password   
+            password,
+            role: 'Admin'   
         })
         .then(result=>{
-            res.status(201).json({message: 'Successfully Register',email: result.email})
+            res.status(201).json({message: 'Successfully Register', email: result.email})
         })
         .catch(err=>{
             next(err)
@@ -39,4 +40,4 @@ class UserController{
     }
 }
 
-module.exports = UserController
+module.exports = AdminController

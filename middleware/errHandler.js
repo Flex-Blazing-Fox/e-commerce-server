@@ -10,10 +10,6 @@ const errHandler = (err, req, res, next)=>{
             statusCode = 404
             errorMessage = {message: "Product Not Found"}
             break
-        case'USER_NOT_FOUND' : 
-            statusCode = 404
-            errorMessage = {message: "User Not Found"}
-            break
         case'SequelizeValidationError' : 
             statusCode = 400
             errorMessage = {message: err.errors[0].message}
