@@ -1,7 +1,10 @@
 const router = require('express').Router()
+const { authenticate, authorize } = require('../middlewares/auth')
 
 const TypeController = require('../controllers/TypeController')
 
+router.use(authenticate)
+router.use(authorize)
 router.get('/', TypeController.getTypes)
 router.get('/:id', TypeController.getType)
 router.post('/', TypeController.addType)

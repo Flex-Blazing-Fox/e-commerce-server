@@ -68,6 +68,33 @@ const errorHandler = (err, req, res, next) => {
       })
       break
 
+    case 'MissingAccessToken':
+      statusCode = 401
+      errors.push({
+        status: statusCode,
+        title: err.name,
+        detail: 'Missing access token',
+      })
+      break
+
+    case 'AuthenticationError':
+      statusCode = 401
+      errors.push({
+        status: statusCode,
+        title: err.name,
+        detail: 'Invalid access token',
+      })
+      break
+      
+    case 'Unauthorized':
+      statusCode = 401
+      errors.push({
+        status: statusCode,
+        title: err.name,
+        detail: 'Forbidden',
+      })
+      break
+
     default:
       statusCode = 500
       errors.push({
