@@ -45,8 +45,8 @@ POST {{host}}/user/login http/1.1
 Content-Type: application/json
 
 {
-    "email": "user1@gmail.com",
-    "password": "user1"
+    "email": "user3@gmail.com",
+    "password": "user3"
 }
 
 ### Login With Wrong Password
@@ -74,10 +74,9 @@ access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6ImN1c3Rvb
 ### Create a Product
 POST {{host}}/product
 Content-Type: application/json
-access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTc3NzQzfQ.q52atHqjV9A-i2hwH-c0UNuPE0fCeGWQZEah-1PyuT0
 
 {
-    "name": "Mouse",
     "image_url": "https://ibb.co/bLMGY0f",
     "price": 500000,
     "stock": 3

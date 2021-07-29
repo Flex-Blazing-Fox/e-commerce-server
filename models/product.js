@@ -18,6 +18,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: true,
+          isAppropriateLength(value) {
+            if (value.length > 100) {
+              throw new Error("Name's length cant be more than 100 characters");
+            }
+          },
         },
       },
       image_url: {
@@ -25,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: true,
+          isUrl: true,
         },
       },
       price: {
@@ -32,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: true,
+          isNumeric: true,
         },
       },
       stock: {
@@ -39,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: true,
+          isInt: true,
         },
       },
     },

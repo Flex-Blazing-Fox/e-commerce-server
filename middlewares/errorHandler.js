@@ -25,7 +25,7 @@ const errorHandler = (err, req, res, next) => {
     case "UPDATE METHOD NEED ALL DATA":
       statusCode = 400;
       error.push(
-        "All data (title, description, status, and due date) must be provided"
+        "All data (name, image_url, price, and stock) must be provided"
       );
       break;
     default:

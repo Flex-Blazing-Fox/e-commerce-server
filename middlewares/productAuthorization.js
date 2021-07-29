@@ -1,5 +1,4 @@
 const authorize = (req, _, next) => {
-  console.log("aaaa");
   if (req.role === "admin") {
     next();
   } else {
