@@ -1,9 +1,8 @@
 const router = require('express').Router()
-const userRouter = require('./userRouter')
-const productRouter = require('./productRouter')
-const { authentication } = require('../middleware/auth')
+const adminRouter = require('./admin/adminRouter')
+const custRouter = require('./cust/custRouter')
 
-router.use('/user', userRouter)
-router.use('/product', authentication, productRouter)
+router.use('/admin', adminRouter)
+// router.use('/customer', custRouter)
 
 module.exports = router

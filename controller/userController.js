@@ -28,7 +28,7 @@ class UserController{
                     userId: result.id
                 }
                 const access_token = jwt.sign(payload, process.env.JWT_SECRET)
-                res.status(200).json({message: 'Login Success', access_token})
+                res.status(200).json({access_token})
             }else{
                 throw{name: 'LOGIN_FAILED'}
             }

@@ -64,6 +64,19 @@ class ProductController{
             next(err)
         })
     }
+    static updateStock(req, res, next){
+        const product = req.product
+        const {stock} = req.body
+        product.stock  = stock
+
+        product.save()
+        .then(result => {
+            res.status(200).json(result)
+        })
+        .catch(err => {
+            next(err)
+        })
+    }
 }
 
 module.exports = ProductController
