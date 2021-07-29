@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "setup:dev": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
-    "setup:test": "NODE_ENV=test && sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "setup:test": "NODE_ENV=test && sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test && sequelize db:seed:all --env test",
     "test": "NODE_ENV=test && jest --runInBand --forceExit --detectOpenHandles",
     "dev": "NODE_ENV=development && nodemon ./bin/server.js",
     "start": "NODE_ENV=production && node ./bin/server.js"
@@ -28,10 +28,10 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
-    "sequelize": "^6.6.5",
-    "supertest": "^6.1.4"
+    "sequelize": "^6.6.5"
   },
   "devDependencies": {
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "supertest": "^6.1.4"
   }
 }

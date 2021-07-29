@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const app = require('../app')
 const request = require('supertest')
 
@@ -9,11 +7,13 @@ describe('POST /admin/login', () => {
       .post('/admin/login')
       .send({
         email: 'admin@mail.com',
-        password: process.env.PASSWORD_ADMIN,
+        password: 'adfkjkad1238',
       })
-      .then((response) => {
-        expect(response.statusCode).toBe(200)
-        expect(response.body).toHaveProperty('jwt', expect.any(String))
+      .end((err, res) => {
+        if (err) return done(err)
+
+        expect(res.status).toBe(200)
+        expect(res.body).toHaveProperty('jwt', expect.any(String))
         done()
       })
   })
@@ -23,14 +23,22 @@ describe('POST /admin/login', () => {
       .post('/admin/login')
       .send({
         email: 'admins@mail.com',
-        password: process.env.PASSWORD_ADMIN,
+        password: 'adfkjkad1238',
       })
-      .then(response => {
-        expect(response.statusCode).toBe(400)
-        expect(response.body).toHaveProperty('errors', expect.any(Array))
-        expect(response.body).toHaveProperty('errors[0].status', 400)
-        expect(response.body).toHaveProperty('errors[0].title',expect.any(String))
-        expect(response.body).toHaveProperty('errors[0].detail', 'Email or password is wrong')
+      .end((err, res) => {
+        if (err) return done(err)
+
+        expect(res.status).toBe(400)
+        expect(res.body).toHaveProperty('errors', expect.any(Array))
+        expect(res.body.errors[0]).toHaveProperty('status', 400)
+        expect(res.body.errors[0]).toHaveProperty(
+          'title',
+          expect.any(String)
+        )
+        expect(res.body.errors[0]).toHaveProperty(
+          'detail',
+          'Email or password is wrong'
+        )
         done()
       })
   })
@@ -42,12 +50,20 @@ describe('POST /admin/login', () => {
         email: 'admin@mail.com',
         password: '123',
       })
-      .then(response => {
-        expect(response.statusCode).toBe(400)
-        expect(response.body).toHaveProperty('errors', expect.any(Array))
-        expect(response.body).toHaveProperty('errors[0].status', 400)
-        expect(response.body).toHaveProperty('errors[0].title',expect.any(String))
-        expect(response.body).toHaveProperty('errors[0].detail', 'Email or password is wrong')
+      .end((err, res) => {
+        if (err) return done(err)
+
+        expect(res.status).toBe(400)
+        expect(res.body).toHaveProperty('errors', expect.any(Array))
+        expect(res.body.errors[0]).toHaveProperty('status', 400)
+        expect(res.body.errors[0]).toHaveProperty(
+          'title',
+          expect.any(String)
+        )
+        expect(res.body.errors[0]).toHaveProperty(
+          'detail',
+          'Email or password is wrong'
+        )
         done()
       })
   })
