@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     res.send({"message":"Server is running"})
 })
 
-router.use('/user', userRouter)
+router.use('/users', userRouter)
 router.use('/category', categoryRouter)
 router.use('/products', productRouter)
 
