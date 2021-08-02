@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup:dev": "set NODE_ENV=development && sequelize db:migrate && sequelize db:seed:all",
-    "setup:test": "set NODE_ENV=test && sequelize db:migrate && sequelize db:seed:all",
-    "test": "set NODE_ENV=test && jest --runInBand --forceExit --detectOpenHandles",
-    "dev": "set NODE_ENV=development && nodemon ./bin/server.js",
-    "start": "set NODE_ENV=production && nodemon ./bin/server.js"
+    "setup:dev": "set NODE_ENV=development&&sequelize db:drop&&sequelize db:create&&sequelize db:migrate&&sequelize db:seed:all",
+    "setup:test": "set NODE_ENV=test&&sequelize db:drop&&sequelize db:create&&sequelize db:migrate && sequelize db:seed:all",
+    "test": "set NODE_ENV=test&&jest --runInBand --forceExit --detectOpenHandles",
+    "dev": "set NODE_ENV=development&&nodemon ./bin/server.js",
+    "start": "set NODE_ENV=production&&node ./bin/server.js"
   },
   "keywords": [],
   "author": "",
