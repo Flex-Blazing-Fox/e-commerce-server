@@ -14,6 +14,7 @@ class AdminController{
             res.status(201).json({message: 'Successfully Register', email: result.email})
         })
         .catch(err=>{
+            console.log(err);
             next(err)
         })
     }

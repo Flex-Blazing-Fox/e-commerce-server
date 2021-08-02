@@ -52,8 +52,8 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Role cannot be null'
         },
         len: {
-          args: [6, 9999],
-          msg: 'Password minimum 6 characters'
+          args: [5, 20],
+          msg: 'Password minimum 5 characters'
         }
       }
     },

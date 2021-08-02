@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup:dev": "set NODE_ENV=development && sequelize db:migrate && sequelize db:seed:all",
+    "setup:test": "set NODE_ENV=test && sequelize db:migrate && sequelize db:seed:all",
+    "test": "set NODE_ENV=test && jest --runInBand --forceExit --detectOpenHandles",
+    "dev": "set NODE_ENV=development && nodemon ./bin/server.js",
+    "start": "set NODE_ENV=production && nodemon ./bin/server.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +23,9 @@
     "nodemon": "^2.0.12",
     "pg": "^8.6.0",
     "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "supertest": "^6.1.4"
   }
 }

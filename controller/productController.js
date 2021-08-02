@@ -52,10 +52,12 @@ class ProductController{
         })
     }
     static updateProduct(req, res, next){
-        const product = req.product
+        let product = req.product
         const {name, image_url, price, stock} = req.body
-        product  = {name, image_url, price, stock}
-
+        product.name = name
+        product.image_url = image_url
+        product.price = price
+        product.stock = stock
         product.save()
         .then(result => {
             res.status(200).json(result)
@@ -71,7 +73,7 @@ class ProductController{
 
         product.save()
         .then(result => {
-            res.status(200).json(result)
+            res.status(200).json(result)    
         })
         .catch(err => {
             next(err)
