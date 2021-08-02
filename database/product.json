@@ -1,19 +1,19 @@
 [
   {
     "name": "drone",
-    "image_url": "https://ibb.co/jJmVdc9",
+    "image_url": "https://i.ibb.co/rdYbgCK/1-Drone-Murah-Drone-Surabaya-Drone-DJI-Drone-Terbaik-Jual-Drone-Harga-Drone-Murah.jpg",
     "price": 21000000,
     "stock": 2
   },
   {
     "name": "laptop",
-    "image_url": "https://ibb.co/5KNZML2",
+    "image_url": "https://i.ibb.co/LNLKk1v/09fb4d2c-e9d4-4949-b26d-969983c4bd54-169.jpg",
     "price": 6000000,
     "stock": 4
   },
   {
     "name": "baju",
-    "image_url": "https://ibb.co/5B7CGBf",
+    "image_url": "https://i.ibb.co/m6xdb6M/Unknown.jpg",
     "price": 40000,
     "stock": 10
   }
