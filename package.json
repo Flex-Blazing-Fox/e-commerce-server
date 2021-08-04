@@ -2,10 +2,13 @@
   "name": "e-commerce-server",
   "version": "1.0.0",
   "description": "e-commerce-server",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "setup:dev": "sequelize-cli db:drop&&sequelize-cli db:create&&sequelize-cli db:migrate",
+    "setup:test": "set NODE_ENV=test&& sequelize-cli db:drop&&sequelize-cli db:create && sequelize-cli db:migrate &&sequelize-cli db:seed:all",
+    "test": "set NODE_ENV=test&&jest --runInBand --forceExit --detectOpenHandles",
+    "dev": "set NODE_ENV=development&&nodemon ./bin/server.js",
+    "start": "set NODE_ENV=production&&node ./bin/server.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +32,9 @@
     "pg": "^8.6.0",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "supertest": "^6.1.4"
   }
 }
