@@ -15,7 +15,7 @@
 - _Jalankan `sequelize db:migrate:undo:all` untuk menghapus migrasi di database_
 - _Jalankan `nodemon app.js` untuk menjalankan applikasi server side._
  
-## Available Endpoint _Kanban_
+## Available Endpoint
 
 _Users :_
 
@@ -60,38 +60,38 @@ Product :_
   **Code 201** : Jika request berhasil
 
   ```
-  {
-    "message": "User Created"
-  }
+    {
+      "message": "User Created"
+    }
   ```
 
   **Code 400** : Jika validasi tidak terpenuhi
 
   ```
-  {
-    "errors": [
-        "Email can not be null",
-        "Email has been used",
-        "Email format is not correct",
-        "Email can not be empty"
-        "Password at least have 6 characters",
-        "Password can not be null"
-        "Password can not be empty"
-    ]
-  }
+    {
+      "errors": [
+          "Email can not be null",
+          "Email has been used",
+          "Email format is not correct",
+          "Email can not be empty"
+          "Password at least have 6 characters",
+          "Password can not be null"
+          "Password can not be empty"
+      ]
+    }
   ```
 
   **Code 500** : Jika request gagal karena server error
 
   ```
-  {
-    "errors": [
-      "Internal server error"
-    ]
-  }
+    {
+      "errors": [
+        "Internal server error"
+      ]
+    }
   ```
 
-  ### User Login :
+### User Login :
    
 > login ke applikasi
 
@@ -116,10 +116,10 @@ Product :_
 * _Data Params_
 
   ```
-  {
-    "email": req.body.email,
-    "password": req.body.password
-  }
+    {
+      "email": req.body.email,
+      "password": req.body.password
+    }
   ```
 
 * _Response_
@@ -127,33 +127,33 @@ Product :_
   **Code 200** : Jika request berhasil
 
   ```
-  {
-    "success": true,
-    "access_token": access_token
-  }
+    {
+      "success": true,
+      "access_token": access_token
+    }
   ```
 
   **Code 401** : Jika validasi tidak terpenuhi
 
   ```
-  {
-    "errors": [
-      "Email or Password is wrong"
-    ]
-  }
+    {
+      "errors": [
+        "Email or Password is wrong"
+      ]
+    }
   ```
 
   **Code 500** : Jika request gagal karena server error
 
   ```
-  {
-    "errors": [
-      "Internal server error"
-    ]
-  }
+    {
+      "errors": [
+        "Internal server error"
+      ]
+    }
   ```
 
-  ### Get Product :
+### Get Product :
 > Menampilkan semua product 
 
 * _URL_
@@ -208,14 +208,67 @@ Product :_
   **Code 500** : Jika request gagal karena server error
 
   ```
-  {
-    "errors": [
-      "Internal server error"
-    ]
-  }
+    {
+      "errors": [
+        "Internal server error"
+      ]
+    }
   ```
 
-  ### Add Product :
+### Get Product by Id:
+> Menampilkan product berdasarkan Id 
+
+* _URL_
+  ```
+  /product
+  ```
+
+* _Method_
+  ```
+  GET
+  ```
+
+* _URL Params_
+  ```
+    id
+  ```
+
+* _Data Params_
+  ```
+  None
+  ```
+
+* _Response_
+
+  **Code 200** : Jika request berhasil
+
+  ```
+    {
+        "data": [
+            {
+                "id": 2,
+                "name": "Adidas",
+                "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1a8P0cOAx7GAsW_5QmlwMze8xNqhyiwPq1g&usqp=CAU",
+                "price": 250000,
+                "stock": 10,
+                "createdAt": "2021-08-03T15:32:02.476Z",
+                "updatedAt": "2021-08-03T15:32:02.476Z"
+            }
+        ]
+    }
+  ```
+
+  **Code 500** : Jika request gagal karena server error
+
+  ```
+    {
+      "errors": [
+        "Internal server error"
+      ]
+    }
+  ```
+
+### Add Product :
 > Menambahkan task baru
 
 * _URL_
@@ -235,11 +288,11 @@ Product :_
 
 * _Data Params_
   ```
-  {
-    "title": req.body.title,
-    "category": req.body.title,
-    "userId" : req.userId
-  }
+    {
+      "title": req.body.title,
+      "category": req.body.title,
+      "userId" : req.userId
+    }
   ```
 
 * _Response_
@@ -247,17 +300,17 @@ Product :_
   **Code 201** : Jika request berhasil
 
   ```
-  {
-    "data": {
-        "id": 9,
-        "name": "Piero",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1a8P0cOAx7GAsW_5QmlwMze8xNqhyiwPq1g&usqp=CAU",
-        "price": 150000,
-        "stock": 10,
-        "updatedAt": "2021-08-04T14:03:58.369Z",
-        "createdAt": "2021-08-04T14:03:58.369Z"
+    {
+      "data": {
+          "id": 9,
+          "name": "Piero",
+          "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1a8P0cOAx7GAsW_5QmlwMze8xNqhyiwPq1g&usqp=CAU",
+          "price": 150000,
+          "stock": 10,
+          "updatedAt": "2021-08-04T14:03:58.369Z",
+          "createdAt": "2021-08-04T14:03:58.369Z"
+      }
     }
-}
   ```
 
   **Code 400** : Validasi tidak terpenuhi,
@@ -276,7 +329,6 @@ Product :_
   ```
 
 ### Edit Product :
-
 > Put Product
 
 * _URL_
@@ -375,7 +427,7 @@ Product :_
   ```
 
 
-  ### Delete task :
+### Delete Product :
 
 > Delete task by id
 
