@@ -32,6 +32,7 @@ class AdminController {
 
       return res.status(200).json({ jwt: access_token, user: payload })
     } catch (err) {
+      console.log(err)
       next(err)
     }
   }
