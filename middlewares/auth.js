@@ -31,24 +31,23 @@ const authentication = (req, res, next) => {
 }
 
 const authorization = (req, res, next) => {
-    // console.log("masuk");
-    // console.log(req.role,">>>>>>");
+    
     if(req.role !== 'admin') throw ( {name: "Accses Denied"})
     const {id} = req.params
-    Product.findOne({ where: {
-        id
-        // userId : req.userId
-    }})
-    .then((product) => {
-        if(!product) throw ( {name: "Product Not Found"})
 
-        req.product = product
-        next()
-    })
-    .catch(err => [
-        // console.log(err)
-        next(err)
-    ])
+	if (id) {
+		Product.findOne({ where: {
+            id
+        }})
+			.then((product) => {
+                if(!product) throw ( {name: "Product Not Found"})
+				req.product = product;
+				next();
+			})
+			.catch((err) => next(err));
+	} else {
+		next();
+	}
 }
 
 module.exports = {authentication, authorization}

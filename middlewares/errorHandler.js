@@ -40,9 +40,9 @@ const errorHandler = (err, req, res, next) => {
         statusCode = 500;
         errors.push('Accses Denied');
         break;
-      default:
-        statusCode = 500;
-        errors.push('Internal server error');
+      // default:
+      //   statusCode = 500;
+      //   errors.push('Internal server error');
     }
     res.status(statusCode).json({ errors });
 }

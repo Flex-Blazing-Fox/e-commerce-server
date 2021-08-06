@@ -3,7 +3,6 @@ const app = require("../app");
 const { sequelize } = require("../models");
 const {queryInterface} = sequelize;
 
-
 beforeAll((done) => {
 	queryInterface.bulkDelete("Users", null, {})
 	.then(() => done())
@@ -29,7 +28,7 @@ describe("POST /register", () => {
 				done();
 			})
 			.catch((err)=>{
-				console.log(err);
+				next(err);
 			})
 	});
 });
@@ -47,7 +46,7 @@ describe("POST /login", () => {
 				done()
             })
 			.catch((err)=>{
-				console.log(err);
+				next(err);
 			})
 	});
 });
