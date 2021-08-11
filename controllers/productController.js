@@ -1,4 +1,4 @@
-const { Product } = require("../models");
+const { Product, Order } = require("../models");
 const getValidationErrorDetails = require("../helpers/getValidationErrorDetails");
 
 class productController {
