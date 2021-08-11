@@ -1,20 +1,32 @@
 [
   {
-    "name": "drone",
-    "image_url": "https://i.ibb.co/rdYbgCK/1-Drone-Murah-Drone-Surabaya-Drone-DJI-Drone-Terbaik-Jual-Drone-Harga-Drone-Murah.jpg",
-    "price": 21000000,
-    "stock": 2
-  },
-  {
-    "name": "laptop",
-    "image_url": "https://i.ibb.co/LNLKk1v/09fb4d2c-e9d4-4949-b26d-969983c4bd54-169.jpg",
-    "price": 6000000,
-    "stock": 4
-  },
-  {
-    "name": "baju",
-    "image_url": "https://i.ibb.co/m6xdb6M/Unknown.jpg",
+    "name": "Baju Cwk Lucu",
+    "image_url": "https://i.ibb.co/fN7ggdb/pic1.jpg",
     "price": 40000,
     "stock": 10
+  },
+  {
+    "name": "Baju Anak Ngga Lucu",
+    "image_url": "https://i.ibb.co/9Tt8tpm/pic2.jpg",
+    "price": 20000,
+    "stock": 5
+  },
+  {
+    "name": "Baju Spesial Buat Om",
+    "image_url": "https://i.ibb.co/pj1G05D/pic3.jpg",
+    "price": 40000,
+    "stock": 10
+  },
+  {
+    "name": "Celana Kurang Bahan",
+    "image_url": "https://i.ibb.co/GMN0H1b/pic4.jpg",
+    "price": 50000,
+    "stock": 6
+  },
+  {
+    "name": "Sepatu Gemesh Aw",
+    "image_url": "https://i.ibb.co/JC6cYvt/pic5.jpg",
+    "price": 100000,
+    "stock": 2
   }
 ]
