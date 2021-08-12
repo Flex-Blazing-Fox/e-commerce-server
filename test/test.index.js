@@ -502,24 +502,4 @@ describe("E-commerce API", () => {
     });
   });
 
-  // ========================================================================= //
-
-  // Testing for unauthenticated account
-
-  // Get all products without token
-  describe("GET /product for unauthenticated account", () => {
-    it("should not get product", (done) => {
-      chai
-        .request(server)
-        .get("/product/1")
-        .end((err, response) => {
-          response.should.have.status(401);
-          response.should.be.a("object");
-          response.body.should.have
-            .property("error")
-            .eql(["Token is not exist or invalid token"]);
-          done();
-        });
-    });
-  });
 });
