@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Product.belongsToMany(models.User, { through: 'Carts' })
     }
   };
   Product.init({
@@ -53,8 +54,19 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Product stock cannot be empty'
         }
       }
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Category stock cannot be empty'
+        }
+      }
     } 
-  }, {
+  },
+   {
     sequelize,
     modelName: 'Product',
   });

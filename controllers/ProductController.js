@@ -2,9 +2,9 @@ const { Product } = require('../models');
 
 class ProductController{
     static addProduct(req, res, next) {
-        const { name, image_url, price, stock } = req.body;
+        const { name, image_url, price, stock, category } = req.body;
     
-        Product.create({ name, image_url, price, stock })
+        Product.create({ name, image_url, price, stock, category })
         .then((product) => {
             res.status(201).json({ data: product });
           })
@@ -38,11 +38,12 @@ class ProductController{
 
     static editProduct(req, res, next) {
         const { product } = req;
-        const { name, image_url, price, stock } = req.body;
+        const { name, image_url, price, stock, category } = req.body;
         product.name = name;
         product.image_url = image_url;
         product.price = price;
         product.stock = stock;
+        product.category = category;
         product.save()
         .then((updatedProduct) => {
           res.status(200).json({ data: updatedProduct });

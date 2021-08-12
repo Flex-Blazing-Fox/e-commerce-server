@@ -23,6 +23,7 @@ const newProduct = {
     image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkCPgIUJaK0f3T604K3uqRJ6_Q_X3mYIhRGQ&usqp=CAU',
     price: 200000,
     stock: 50,
+    category, 'Perabot',
     createdAt: new Date(),
     updatedAt: new Date(),
 };
@@ -118,6 +119,7 @@ describe('PUT /products/:id', () => {
         image_url: 'http://sandal',
         price: 17000,
         stock: 3,
+        category: 'Perabot'
       })
       .then(({ status, body }) => {
         expect(status).toBe(200);

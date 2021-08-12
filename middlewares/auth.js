@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const {User,Product} = require('../models')
+const {User,Product, Cart} = require('../models')
 
 const authentication = (req, res, next) => {
     if (!req.headers.access_token) return next( {name: "Missing access token"})
@@ -15,15 +15,12 @@ const authentication = (req, res, next) => {
             } else {
                 req.userId = user.id
                 req.role = user.role
-                // console.log(user.role,"?????");
                 next()
             }
         })
         .catch(err => {
             next(err)
         })
-        // req.userId = decoded.id
-        // next()
     }
     catch(err) {
         next( {name: "Invalid access_token"})
@@ -50,4 +47,43 @@ const authorization = (req, res, next) => {
 	}
 }
 
-module.exports = {authentication, authorization}
+const authCustomerGeneral = (req, res, next) => {
+
+    const userRole = req.currentUser.role
+
+    if (userRole === 'customer') {
+        next()
+    } else {
+        let error = {name: 'Not Authorised', message: 'You must be a customer to shop'}
+        next(error)
+    }
+
+}
+
+const authCustomerActions = (req, res, next) => {
+
+    Cart.findByPk(+req.params.cartId)
+        .then(cart => {
+            if (!cart) {
+                throw {
+                    name: 'Not Found',
+                    message: 'Cart not found'
+                }
+            } else {
+                if (cart.userId !== req.currentUser.id) {
+                    throw {
+                        name: 'Not Authorised',
+                        message: 'You do not have permission'
+                    }
+                } else {
+                    next()
+                }
+            }
+        })
+        .catch(err => {
+            next(err)
+        })
+
+}
+
+module.exports = {authentication, authorization, authCustomerGeneral, authCustomerActions}
