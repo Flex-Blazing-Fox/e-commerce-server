@@ -167,8 +167,8 @@ describe("E-commerce API", () => {
           ids = response.body.map((res) => res.id);
           response.should.have.status(200);
           response.body.should.be.a("array");
-          response.body.length.should.be.eq(3);
-          ids.should.have.members([1, 2, 3]);
+          response.body.length.should.be.eq(5);
+          ids.should.have.members([1, 2, 3, 4, 5]);
           done();
         });
     });
