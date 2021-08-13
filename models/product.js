@@ -74,5 +74,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Product',
   });
+  Product.associate = function (models) {
+    Product.hasMany(models.Cart, {foreignKey: 'productId'})
+  }
   return Product;
 };

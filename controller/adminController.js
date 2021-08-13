@@ -21,7 +21,10 @@ class AdminController{
     static login(req, res, next){
         const {email, password} = req.body
         User.findOne({
-            where: {email}
+            where: {
+                email,
+                role: 'Admin'
+            }
         })
         .then(result=>{
             const compare = bcrypt.compareSync(password, result.password)
@@ -30,7 +33,7 @@ class AdminController{
                     userId: result.id
                 }
                 const access_token = jwt.sign(payload, process.env.JWT_SECRET)
-                res.status(200).json({access_token})
+                res.status(200).json({token: access_token})
             }else{
                 throw{name: 'LOGIN_FAILED'}
             }
@@ -38,6 +41,9 @@ class AdminController{
         .catch(err=>{
             next({name: 'LOGIN_FAILED'})
         })
+    }
+    static listOrder(req, res, next){
+        
     }
 }
 

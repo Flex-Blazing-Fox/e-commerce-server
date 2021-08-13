@@ -1,4 +1,4 @@
-const {Product} = require('../models')
+const {Product, Cart} = require('../models')
 
 const adminAuthorization = (req, res, next)=>{
     if(req.user.role !== 'Admin'){
@@ -24,26 +24,23 @@ const adminAuthorization = (req, res, next)=>{
 }
 
 //untuk cart
-// const custAuthorization = (req, res, next)=>{
-//     const{id} = req.params
-//
-//     Cart.findOne({
-//         where:{
-//             id,
-//             userId: req.user.id
-//         }
-//     })
-//     .then(result=>{
-//         if(!result){
-//             throw {name: 'CART_IS_EMPTY'}
-//         }else{
-//             req.product = result
-//             next()
-//         }
-//     })
-//     .catch(err=>{
-//         next(err)
-//     })
-// }
+const custAuthorization = (req, res, next)=>{
+    const custId = req.cust.id
+    Cart.findAll({
+        where: {
+            custId
+        },
+        include: [
+            {model: Product}
+        ]
+    })
+    .then(result=>{
+        req.cart = result
+        next()
+    })
+    .catch(err=>{
+        next(err)
+    })
+}
 
-module.exports = {adminAuthorization}//, custAuthorization}
+module.exports = {adminAuthorization, custAuthorization}

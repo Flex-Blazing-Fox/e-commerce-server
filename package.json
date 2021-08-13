@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "google-auth-library": "^7.3.0",
     "jsonwebtoken": "^8.5.1",
+    "midtrans-client": "^1.2.4",
     "nodemon": "^2.0.12",
     "pg": "^8.6.0",
     "sequelize": "^6.6.5"

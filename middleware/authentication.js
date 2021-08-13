@@ -43,9 +43,10 @@ const custAuthentication = (req, res, next)=>{
         }})
         .then(result=>{
             if(result){
-                req.user = {
+                req.cust = {
                     id: result.id,
-                    role: result.role
+                    role: result.role,
+                    email: req.email
                 }
                 next() 
             }else{
