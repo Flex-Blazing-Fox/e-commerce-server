@@ -1,0 +1,122 @@
+@host=https://ecommerce-server-rangga.herokuapp.com
+# @host=http://localhost:3000
+# @host=https://ecommerce-server-p5rih22a7q-et.a.run.app
+
+GET {{host}} http/1.1
+
+### Register
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "user4@gmail.com",
+    "password": "user4"
+}
+
+### Register same email
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "user1@gmail.com",
+    "password": "user123"
+}
+
+### Register invalid email
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "user",
+    "password": "user123"
+}
+
+### Register empty email or password
+POST {{host}}/user/register http/1.1
+Content-Type: application/json
+
+{
+    "email": "",
+    "password": "user123"
+}
+
+
+### Login
+POST {{host}}/user/login http/1.1
+Content-Type: application/json
+
+{
+    "email": "user1@gmail.com",
+    "password": "user1"
+}
+
+### Login With Wrong Password
+POST {{host}}/user/login http/1.1
+Content-Type: application/json
+
+{
+    "email": "user2@gmail.com",
+    "password": "user1"
+}
+
+### Get All Products
+GET {{host}}/product
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI3NTY5MjMyfQ.jX_5Pg81eymLIx1VvKEprhKmSHBlwBV6J3eEqdEUJek
+
+
+
+### Get Certain Product
+GET {{host}}/product/2
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nywicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI3NTY5MjMyfQ.jX_5Pg81eymLIx1VvKEprhKmSHBlwBV6J3eEqdEUJek
+
+
+### Create a Product
+POST {{host}}/product
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTc3NzQzfQ.q52atHqjV9A-i2hwH-c0UNuPE0fCeGWQZEah-1PyuT0
+
+{
+    "image_url": "https://ibb.co/bLMGY0f",
+    "price": 500000,
+    "stock": 3
+}
+
+### Patch a Product
+PATCH {{host}}/product/1
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
+
+{
+    "name": "Drone Mantapss Bangets",
+    "image_url": "https://ibb.co/jJmVdc9",
+    "price": 22000000,
+    "stock": 15
+}
+
+### Put a Product
+PUT {{host}}/product/1
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
+
+{
+    "name": "Drone Mantapss Bangets",
+    "image_url": "https://ibb.co/jJmVdc9",
+    "price": 21000000,
+    "stock": 5
+}
+
+### Delete a Product
+DELETE {{host}}/product/4
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjI3NTcwNDI5fQ.BIWo_w9HHDw_t4kbHnWtyeEG1LwBBrem8_Pjv5cKOvU
+
+### Create Order
+POST {{host}}/order
+Content-Type: application/json
+access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI4Njg4NjE1fQ.yQNjIuh89b3hFDJRll323-a-CRiIvKzT35AUvN5t8do
+
+{
+    
+}

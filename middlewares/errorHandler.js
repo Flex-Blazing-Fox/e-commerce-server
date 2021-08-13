@@ -1,0 +1,38 @@
+const errorHandler = (err, req, res, next) => {
+  let statusCode,
+    error = [];
+  switch (err.name) {
+    case "EMAIL / PASSWORD AUTHENTICATION FAIL":
+      statusCode = 401;
+      error.push("Email or password combination can't be found");
+      break;
+    case "INVALID TOKEN / TOKEN NOT EXIST":
+      statusCode = 401;
+      error.push("Token is not exist or invalid token");
+      break;
+    case "PRODUCT NOT FOUND / AUTHORIZED":
+      statusCode = 404;
+      error.push(`Product with id ${err.id} is not found / authorized`);
+      break;
+    case "ROLE NOT AUTHORIZED":
+      statusCode = 403;
+      error.push("Role not authorized");
+      break;
+    case "SEQUELIZE VALIDATION ERROR":
+      statusCode = 400;
+      err.details.forEach((detail) => error.push(detail));
+      break;
+    case "UPDATE METHOD NEED ALL DATA":
+      statusCode = 400;
+      error.push(
+        "All data (name, image_url, price, and stock) must be provided"
+      );
+      break;
+    default:
+      statusCode = 500;
+      error.push("Internal server error");
+  }
+  res.status(statusCode).json({ error });
+};
+
+module.exports = errorHandler;
