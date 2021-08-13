@@ -41,7 +41,6 @@ class userController {
             role: user.dataValues.role,
           };
           const accessToken = jwt.sign(payload, process.env.JWT_SECRET);
-          console.log(accessToken)
           res
             .status(200)
             .json({ access_token: accessToken, role: user.dataValues.role });
@@ -50,6 +49,7 @@ class userController {
         }
       })
       .catch((err) => {
+        console.log(err)
         next(err);
       });
   }
