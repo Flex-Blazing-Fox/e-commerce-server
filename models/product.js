@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Category, {foreignKey:'categoryId'})
+      this.hasMany(models.Cart, {foreignKey:'productId'})
     }
   };
   Product.init({
@@ -52,6 +53,16 @@ module.exports = (sequelize, DataTypes) => {
         max:{
           args:[999999999],
           msg:"Stock Tidak Boleh Minus"
+        }
+      }
+    },
+    descriptions: {
+      allowNull:false,
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Field Tidak Boleh Kosong (Dapat disisi (-) apablia tidak ada deskripsi)"
         }
       }
     },

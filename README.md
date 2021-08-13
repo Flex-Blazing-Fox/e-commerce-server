@@ -96,6 +96,24 @@ http://127.0.0.1:3000
             }
         ]
         ```
+
+### **POST / Add New Product**
+### **PUT / Update Product**
+### **DELETE / Delete Product**
+
+### **GET / Get Category**
+### **GET / Get Category By Id**
+### **POST / Add New Category**
+### **PUT / Category**
+### **DELETE / Delete Category**
+
+### **GET / Shopping Cart**
+### **POST / Add Product To Shopping Cart**
+### **PATCH / Increase Quantity By 1**
+### **PATCH / Decrease Quantity By 1**
+### **DELETE / Delete Product Shopping Cart**
+
+
 ## User API
 ---
 

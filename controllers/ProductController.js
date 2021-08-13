@@ -18,7 +18,11 @@ class ProductController{
     static findProductById(req, res, next){
         const { id } = req.params
 
-        Product.findOne({where:{id}})
+        Product.findOne({
+            include:{
+                model:Category
+            },
+            where:{id}})
             .then(data => {
                 res.status(200).json(data)
             })
@@ -29,16 +33,16 @@ class ProductController{
 
     static addProduct(req, res, next){
        
-        let { name, image_url, price, stock, categoryId } = req.body
+        let { name, image_url, price, stock, category } = req.body
         price = +price
         stock = +stock
-    
+
         Product.create({ 
             name, 
             image_url, 
             price, 
             stock, 
-            categoryId 
+            categoryId:category
         })
             .then(data => {
                 res.status(201).json(data)
@@ -50,15 +54,17 @@ class ProductController{
 
     static updateProduct(req, res, next){
         const { id } = req.params
-        let { name, image_url, price, stock, categoryId } = req.body
+        let { name, image_url, price, stock, descriptions, category } = req.body
         price = +price
         stock = +stock
 
         Product.update({
             name, 
             image_url, 
-            price, stock, 
-            categoryId
+            price, 
+            stock,
+            descriptions, 
+            categoryId:category
         },
         {
             where:{id},
@@ -74,8 +80,8 @@ class ProductController{
 
     static deleteProduct(req, res, next){
         const { id } = req.params
-
-        Product.findOne({where:{id}})
+  
+        Product.destroy({where:{id}})
             .then(() => {
                 res.status(200).json({"message":"Product Successfully Deleted"})
             })
