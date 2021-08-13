@@ -1,6 +1,6 @@
-# @host=https://kanban-server-rangga.herokuapp.com
+@host=https://ecommerce-server-rangga.herokuapp.com
 # @host=http://localhost:3000
-@host=https://ecommerce-server-p5rih22a7q-et.a.run.app
+# @host=https://ecommerce-server-p5rih22a7q-et.a.run.app
 
 GET {{host}} http/1.1
 
